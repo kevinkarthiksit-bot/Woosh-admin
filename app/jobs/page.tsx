@@ -1,5 +1,5 @@
-import { GatedModulePage } from "@/components/modules/GatedModulePage";
+import { redirect } from "next/navigation";
 
 export default function JobsPage() {
-  return <GatedModulePage moduleKey="jobs" title="Jobs" />;
+  redirect("/live-operations");
 }

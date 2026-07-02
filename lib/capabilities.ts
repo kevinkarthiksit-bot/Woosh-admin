@@ -16,9 +16,13 @@ export type AdminModuleKey =
   | "media"
   | "employees"
   | "jobs"
+  | "liveOperations"
   | "attendance"
   | "inventory"
   | "incentives"
+  | "payrollsEarnings"
+  | "packagesSubscriptions"
+  | "reportsAnalytics"
   | "support"
   | "auditLog"
   | "settings"
@@ -32,20 +36,24 @@ export const adminCapabilities: Record<AdminModuleKey, ModuleStatus> = {
   services: "blocked_security",
   slots: "blocked_security",
   coupons: "blocked_security",
-  customers: "not_ready",
+  customers: "stub",
   wallet: "blocked_security",
-  referrals: "not_ready",
+  referrals: "stub",
   memberships: "stub",
   packagePricing: "blocked_security",
   media: "blocked_security",
   employees: "blocked_security",
   jobs: "stub",
+  liveOperations: "stub",
   attendance: "blocked_security",
   inventory: "blocked_security",
   incentives: "blocked_security",
-  support: "not_ready",
+  payrollsEarnings: "stub",
+  packagesSubscriptions: "stub",
+  reportsAnalytics: "stub",
+  support: "stub",
   auditLog: "not_ready",
-  settings: "not_ready",
+  settings: "stub",
   apiReadiness: "live",
 };
 
@@ -110,7 +118,7 @@ export const moduleMeta: Record<AdminModuleKey, ModuleMeta> = {
   },
   coupons: {
     key: "coupons",
-    label: "Coupons",
+    label: "Offers & Coupons",
     href: "/coupons",
     group: "Growth",
     expectedEndpoints: ["GET /coupons", "POST /coupons"],
@@ -183,6 +191,14 @@ export const moduleMeta: Record<AdminModuleKey, ModuleMeta> = {
     placeholderMessage:
       "Admin dispatch APIs required for assigning, reassigning, and monitoring jobs.",
   },
+  liveOperations: {
+    key: "liveOperations",
+    label: "Live Operations",
+    href: "/live-operations",
+    group: "Operations",
+    expectedEndpoints: ["GET /admin/live-operations"],
+    placeholderMessage: "Live operations tracking uses demo data until APIs are connected.",
+  },
   attendance: {
     key: "attendance",
     label: "Attendance",
@@ -207,9 +223,33 @@ export const moduleMeta: Record<AdminModuleKey, ModuleMeta> = {
     expectedEndpoints: ["GET /employee-incentives/config"],
     placeholderMessage: "Incentive config requires authenticated admin access.",
   },
+  payrollsEarnings: {
+    key: "payrollsEarnings",
+    label: "Payrolls & Earnings",
+    href: "/payrolls-earnings",
+    group: "People",
+    expectedEndpoints: ["GET /admin/payroll"],
+    placeholderMessage: "Payroll APIs use demo data until backend is connected.",
+  },
+  packagesSubscriptions: {
+    key: "packagesSubscriptions",
+    label: "Packages & Subscriptions",
+    href: "/packages-subscriptions",
+    group: "Catalog",
+    expectedEndpoints: ["GET /memberships/plans"],
+    placeholderMessage: "Package and subscription admin uses demo data.",
+  },
+  reportsAnalytics: {
+    key: "reportsAnalytics",
+    label: "Reports & Analytics",
+    href: "/reports-analytics",
+    group: "System",
+    expectedEndpoints: ["GET /admin/reports"],
+    placeholderMessage: "Reports and analytics use demo data until APIs are connected.",
+  },
   support: {
     key: "support",
-    label: "Support",
+    label: "Complaints & Support",
     href: "/support",
     group: "System",
     expectedEndpoints: ["GET /admin/support/tickets"],

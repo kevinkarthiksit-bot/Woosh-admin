@@ -6,8 +6,8 @@ import {
 } from "@/lib/capabilities";
 
 describe("admin capabilities", () => {
-  it("marks customers as not_ready", () => {
-    expect(getModuleStatus("customers")).toBe("not_ready");
+  it("marks customers as stub for demo UI", () => {
+    expect(getModuleStatus("customers")).toBe("stub");
   });
 
   it("marks orders as blocked_security", () => {
@@ -20,5 +20,10 @@ describe("admin capabilities", () => {
 
   it("includes api readiness as live", () => {
     expect(adminCapabilities.apiReadiness).toBe("live");
+  });
+
+  it("includes new screenshot modules", () => {
+    expect(getModuleStatus("liveOperations")).toBe("stub");
+    expect(getModuleStatus("reportsAnalytics")).toBe("stub");
   });
 });

@@ -1,5 +1,5 @@
-import { GatedModulePage } from "@/components/modules/GatedModulePage";
+import { redirect } from "next/navigation";
 
 export default function MembershipsPage() {
-  return <GatedModulePage moduleKey="memberships" title="Memberships" />;
+  redirect("/packages-subscriptions");
 }

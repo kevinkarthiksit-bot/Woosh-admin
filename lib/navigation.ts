@@ -1,19 +1,46 @@
-import type { AdminModuleKey } from "@/lib/capabilities";
-import { moduleMeta } from "@/lib/capabilities";
+import type { LucideIcon } from "lucide-react";
+import {
+  BarChart3,
+  Box,
+  ClipboardList,
+  CreditCard,
+  Headphones,
+  LayoutDashboard,
+  MapPin,
+  Package,
+  Settings,
+  Tag,
+  UserCog,
+  Users,
+  Wallet,
+} from "lucide-react";
 
-export const navGroups = ["Operations", "Catalog", "People", "Growth", "System"] as const;
-
-export function getNavItems() {
-  return (Object.keys(moduleMeta) as AdminModuleKey[])
-    .filter((key) => key !== "orderDetail" && key !== "wallet")
-    .map((key) => moduleMeta[key])
-    .sort((a, b) => {
-      const groupDiff = navGroups.indexOf(a.group) - navGroups.indexOf(b.group);
-      if (groupDiff !== 0) return groupDiff;
-      return a.label.localeCompare(b.label);
-    });
+export interface NavItem {
+  key: string;
+  label: string;
+  href: string;
+  icon: LucideIcon;
+  internal?: boolean;
 }
 
-export function getNavItemsByGroup(group: (typeof navGroups)[number]) {
-  return getNavItems().filter((item) => item.group === group);
+/** Screenshot-style flat sidebar navigation */
+export const screenshotNav: NavItem[] = [
+  { key: "dashboard", label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { key: "customers", label: "Customers", href: "/customers", icon: Users },
+  { key: "orders", label: "Orders", href: "/orders", icon: ClipboardList },
+  { key: "employees", label: "Employees", href: "/employees", icon: UserCog },
+  { key: "liveOperations", label: "Live Operations", href: "/live-operations", icon: MapPin },
+  { key: "inventory", label: "Inventory", href: "/inventory", icon: Box },
+  { key: "payrollsEarnings", label: "Payrolls & Earnings", href: "/payrolls-earnings", icon: Wallet },
+  { key: "attendance", label: "Attendance", href: "/attendance", icon: Users },
+  { key: "support", label: "Complaints & Support", href: "/support", icon: Headphones },
+  { key: "packagesSubscriptions", label: "Packages & Subscriptions", href: "/packages-subscriptions", icon: Package },
+  { key: "reportsAnalytics", label: "Reports & Analytics", href: "/reports-analytics", icon: BarChart3 },
+  { key: "coupons", label: "Offers & Coupons", href: "/coupons", icon: Tag },
+  { key: "settings", label: "Settings", href: "/settings", icon: Settings },
+  { key: "apiReadiness", label: "API Readiness", href: "/api-readiness", icon: CreditCard, internal: true },
+];
+
+export function getScreenshotNav(includeInternal = false) {
+  return screenshotNav.filter((item) => includeInternal || !item.internal);
 }

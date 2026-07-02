@@ -1,5 +1,5 @@
-import { GatedModulePage } from "@/components/modules/GatedModulePage";
+import { redirect } from "next/navigation";
 
 export default function IncentivesPage() {
-  return <GatedModulePage moduleKey="incentives" title="Employee incentives" />;
+  redirect("/payrolls-earnings");
 }

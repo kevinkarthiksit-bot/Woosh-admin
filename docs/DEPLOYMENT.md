@@ -5,11 +5,12 @@ Admin deploys as a **standard Next.js app** on Vercel (not static export like th
 ## One-time setup
 
 1. Push this repo to GitHub: `kevinkarthiksit-bot/woosh-admin`
-2. Vercel → **Add New Project** → import `woosh-admin`
+2. Vercel → **Add New Project** → import `woosh-admin` (separate from `woosh-website`)
 3. Framework: **Next.js**
 4. Build command: `pnpm build`
 5. Install command: `pnpm install`
 6. Enable **Deployment Protection** on Preview (and Production until launch)
+7. Add custom domain: `admin-preview.getwoosh.com` (Production)
 
 ## Environment variables
 
@@ -33,13 +34,16 @@ Copy local defaults from `.env.example`.
 ## Smoke checklist (preview)
 
 - [ ] `/login` loads
-- [ ] Demo login reaches `/dashboard`
-- [ ] Dashboard shows demo badge
-- [ ] `/customers` shows API required panel
-- [ ] `/orders` shows security blocked + demo table
+- [ ] Demo login (any password) reaches `/dashboard`
+- [ ] Sidebar shows screenshot modules (Customers, Orders, Live Operations, etc.)
+- [ ] `/customers` shows Customer Management demo UI
+- [ ] `/orders` shows Order Management demo UI with detail panel
+- [ ] `/support` shows Complaints & Support demo UI
+- [ ] `/live-operations`, `/packages-subscriptions`, `/payrolls-earnings`, `/reports-analytics` load
 - [ ] `/api-readiness` lists all modules
 - [ ] No browser console CORS errors on stub-first mode
 - [ ] Deployment protection enabled
+- [ ] `admin-preview.getwoosh.com` resolves with valid SSL (if domain attached)
 
 ## Production launch gates
 

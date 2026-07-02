@@ -1,5 +1,5 @@
-import { GatedModulePage } from "@/components/modules/GatedModulePage";
+import { SettingsView } from "@/components/modules/SettingsView";
 
 export default function SettingsPage() {
-  return <GatedModulePage moduleKey="settings" title="Settings" />;
+  return <SettingsView />;
 }

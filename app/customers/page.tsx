@@ -1,5 +1,5 @@
-import { GatedModulePage } from "@/components/modules/GatedModulePage";
+import { CustomersView } from "@/components/modules/CustomersView";
 
 export default function CustomersPage() {
-  return <GatedModulePage moduleKey="customers" title="Customers" />;
+  return <CustomersView />;
 }

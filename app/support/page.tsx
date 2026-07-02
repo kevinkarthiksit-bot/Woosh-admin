@@ -1,5 +1,5 @@
-import { GatedModulePage } from "@/components/modules/GatedModulePage";
+import { SupportView } from "@/components/modules/SupportView";
 
 export default function SupportPage() {
-  return <GatedModulePage moduleKey="support" title="Support tickets" />;
+  return <SupportView />;
 }

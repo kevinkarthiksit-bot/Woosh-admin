@@ -1,5 +1,5 @@
-import { GatedModulePage } from "@/components/modules/GatedModulePage";
+import { AttendanceView } from "@/components/modules/AttendanceView";
 
 export default function AttendancePage() {
-  return <GatedModulePage moduleKey="attendance" title="Attendance" />;
+  return <AttendanceView />;
 }

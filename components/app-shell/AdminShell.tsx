@@ -25,18 +25,18 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
   if (isLoading || (requiresAuth(pathname) && !isAuthenticated)) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-100 text-slate-600">
+      <div className="flex min-h-screen items-center justify-center bg-[#F8F9FB] text-slate-600">
         Loading admin panel...
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen bg-slate-100">
+    <div className="flex min-h-screen bg-[#F8F9FB]">
       <Sidebar />
-      <div className="flex min-h-screen flex-1 flex-col">
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col">
         <TopBar />
-        <main className="flex-1 p-6">{children}</main>
+        <main className="flex-1 overflow-auto p-6">{children}</main>
       </div>
     </div>
   );
