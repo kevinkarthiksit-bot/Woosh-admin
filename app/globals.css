@@ -9,6 +9,11 @@
   --font-sans: var(--font-geist-sans);
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);
